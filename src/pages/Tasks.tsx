@@ -23,10 +23,12 @@ import {
   CreditCard,
   Award,
   GraduationCap,
-  Briefcase
+  Briefcase,
+  Upload
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
+import bankLogo from "@/assets/attijariwafa-bank-logo.png";
 
 interface Task {
   id: string;
@@ -38,6 +40,7 @@ interface Task {
   estimatedTime: string;
   completed: boolean;
   icon: any;
+  hasUpload?: boolean;
 }
 
 const Tasks = () => {
@@ -54,7 +57,8 @@ const Tasks = () => {
       dueDate: "Dec 5, 2024",
       estimatedTime: "10 min",
       completed: false,
-      icon: Camera
+      icon: Camera,
+      hasUpload: true
     },
     {
       id: "2",
@@ -274,9 +278,11 @@ const Tasks = () => {
             Back to Dashboard
           </Button>
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-gradient-primary rounded-full flex items-center justify-center">
-              <CheckCircle className="w-4 h-4 text-white" />
-            </div>
+            <img 
+              src={bankLogo} 
+              alt="Attijariwafa Bank Egypt" 
+              className="h-8 w-auto object-contain"
+            />
             <div>
               <h1 className="text-2xl font-bold text-foreground">Document Submission</h1>
               <p className="text-muted-foreground">Submit required documents for your onboarding</p>
@@ -350,6 +356,33 @@ const Tasks = () => {
                           }`}>
                             {task.description}
                           </p>
+                          {task.hasUpload && (
+                            <div className="mt-3">
+                              <input
+                                type="file"
+                                accept="image/*"
+                                className="hidden"
+                                id={`upload-${task.id}`}
+                                onChange={(e) => {
+                                  const file = e.target.files?.[0];
+                                  if (file) {
+                                    console.log(`File uploaded for ${task.title}:`, file.name);
+                                    // Auto-mark as completed when file is uploaded
+                                    toggleTask(task.id);
+                                  }
+                                }}
+                              />
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                onClick={() => document.getElementById(`upload-${task.id}`)?.click()}
+                                className="mr-2"
+                              >
+                                <Upload className="w-4 h-4 mr-2" />
+                                Upload Image
+                              </Button>
+                            </div>
+                          )}
                         </div>
                       </div>
                       

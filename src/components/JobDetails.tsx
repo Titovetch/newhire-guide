@@ -10,13 +10,35 @@ import {
   Calendar,
   DollarSign,
   Building,
-  PenTool
+  PenTool,
+  ArrowLeft
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import bankLogo from "@/assets/attijariwafa-bank-logo.png";
 
 const JobDetails = () => {
+  const navigate = useNavigate();
+
   return (
-    <div className="space-y-6 p-6">
-      <h2 className="text-2xl font-bold text-foreground">Job Details</h2>
+    <div className="min-h-screen bg-gradient-warm">
+      {/* Header */}
+      <div className="bg-white/50 backdrop-blur-sm border-b">
+        <div className="container mx-auto px-4 py-4 flex items-center gap-4">
+          <Button variant="ghost" onClick={() => navigate("/dashboard")}>
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back to Dashboard
+          </Button>
+          <img 
+            src={bankLogo} 
+            alt="Attijariwafa Bank Egypt" 
+            className="h-8 w-auto object-contain"
+          />
+          <h1 className="text-xl font-semibold text-foreground">Job Details</h1>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 py-8">
+        <div className="space-y-6">
 
       <div className="grid lg:grid-cols-2 gap-6">
         {/* Job Offer & Contract */}
@@ -176,6 +198,8 @@ const JobDetails = () => {
             </div>
           </CardContent>
         </Card>
+      </div>
+        </div>
       </div>
     </div>
   );

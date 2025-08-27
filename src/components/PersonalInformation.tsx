@@ -16,10 +16,14 @@ import {
   FileText,
   Upload,
   Camera,
-  Edit3
+  Edit3,
+  ArrowLeft
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import bankLogo from "@/assets/attijariwafa-bank-logo.png";
 
 const PersonalInformation = () => {
+  const navigate = useNavigate();
   const [isEditing, setIsEditing] = useState(false);
   const [personalInfo, setPersonalInfo] = useState({
     fullName: "John Doe",
@@ -44,17 +48,34 @@ const PersonalInformation = () => {
   };
 
   return (
-    <div className="space-y-6 p-6">
-      <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-foreground">Personal Information</h2>
-        <Button 
-          onClick={() => setIsEditing(!isEditing)}
-          variant={isEditing ? "default" : "outline"}
-        >
-          <Edit3 className="w-4 h-4 mr-2" />
-          {isEditing ? "Save Changes" : "Edit Profile"}
-        </Button>
+    <div className="min-h-screen bg-gradient-warm">
+      {/* Header */}
+      <div className="bg-white/50 backdrop-blur-sm border-b">
+        <div className="container mx-auto px-4 py-4 flex items-center gap-4">
+          <Button variant="ghost" onClick={() => navigate("/dashboard")}>
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back to Dashboard
+          </Button>
+          <img 
+            src={bankLogo} 
+            alt="Attijariwafa Bank Egypt" 
+            className="h-8 w-auto object-contain"
+          />
+          <h1 className="text-xl font-semibold text-foreground">Personal Information</h1>
+        </div>
       </div>
+
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-2xl font-bold text-foreground">Personal Information</h2>
+          <Button 
+            onClick={() => setIsEditing(!isEditing)}
+            variant={isEditing ? "default" : "outline"}
+          >
+            <Edit3 className="w-4 h-4 mr-2" />
+            {isEditing ? "Save Changes" : "Edit Profile"}
+          </Button>
+        </div>
 
       <div className="grid lg:grid-cols-3 gap-6">
         {/* Profile Photo Section */}
@@ -70,10 +91,28 @@ const PersonalInformation = () => {
               <AvatarImage src="/placeholder-avatar.jpg" />
               <AvatarFallback className="text-2xl">JD</AvatarFallback>
             </Avatar>
-            <Button variant="outline" size="sm">
-              <Upload className="w-4 h-4 mr-2" />
-              Change Photo
-            </Button>
+            <div className="space-y-2">
+              <input
+                type="file"
+                accept="image/*"
+                className="hidden"
+                id="profile-upload"
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (file) {
+                    console.log("Profile photo uploaded:", file.name);
+                  }
+                }}
+              />
+              <Button 
+                variant="outline" 
+                size="sm"
+                onClick={() => document.getElementById('profile-upload')?.click()}
+              >
+                <Upload className="w-4 h-4 mr-2" />
+                Upload Photo
+              </Button>
+            </div>
           </CardContent>
         </Card>
 
@@ -303,6 +342,7 @@ const PersonalInformation = () => {
               </div>
             </CardContent>
           </Card>
+        </div>
         </div>
       </div>
     </div>
