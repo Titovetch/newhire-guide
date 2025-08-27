@@ -36,8 +36,8 @@ const Equipment = () => {
   const [equipment] = useState<EquipmentItem[]>([
     {
       id: "1",
-      name: "MacBook Pro 14-inch",
-      description: "M3 Pro chip, 16GB RAM, 512GB SSD with pre-installed banking software",
+      name: "Lenovo ThinkPad",
+      description: "Latest model with pre-installed banking software and security features",
       status: "ready",
       icon: Laptop,
       estimatedDelivery: "Ready for pickup",
@@ -64,6 +64,16 @@ const Equipment = () => {
       estimatedDelivery: "Dec 5, 2024",
       location: "Security Office",
       progress: 25
+    },
+    {
+      id: "4",
+      name: "Official Bank Stationery",
+      description: "Business cards, letterheads, and branded stationery items",
+      status: "processing",
+      icon: Package,
+      estimatedDelivery: "Dec 8, 2024",
+      location: "Administrative Department",
+      progress: 20
     }
   ]);
 

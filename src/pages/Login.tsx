@@ -3,28 +3,46 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { ArrowLeft, Lock, Mail, Building2 } from "lucide-react";
+import { ArrowLeft, Lock, CreditCard, Building2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useIsMobile } from "@/hooks/use-mobile";
+import bankLogo from "@/assets/attijariwafa-bank-logo.png";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
+  const [nationalId, setNationalId] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
   const isMobile = useIsMobile();
 
+  const validateNationalId = (id: string) => {
+    // Remove any spaces or dashes
+    const cleanId = id.replace(/[\s-]/g, '');
+    // Check if it's exactly 14 digits
+    return /^\d{14}$/.test(cleanId);
+  };
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!validateNationalId(nationalId)) {
+      toast({
+        title: "Invalid National ID",
+        description: "National ID must be exactly 14 digits",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsLoading(true);
 
     // Mock authentication - hardcoded credentials
-    if (email === "john.doe@bank.com" && password === "welcome123") {
+    if (nationalId === "12345678901234" && password === "welcome123") {
       setTimeout(() => {
         toast({
           title: "Welcome aboard!",
-          description: "Successfully logged in. Redirecting to your dashboard...",
+          description: "Successfully logged in to Attijariwafa Bank Egypt onboarding",
         });
         navigate("/dashboard");
       }, 1000);
@@ -32,7 +50,7 @@ const Login = () => {
       setTimeout(() => {
         toast({
           title: "Login failed",
-          description: "Invalid credentials. Use john.doe@bank.com / welcome123",
+          description: "Invalid credentials. Use National ID: 12345678901234 / Password: welcome123",
           variant: "destructive",
         });
         setIsLoading(false);
@@ -56,12 +74,16 @@ const Login = () => {
 
         {/* Mobile Branding Section */}
         <div className="px-6 pt-8 pb-12 text-center">
-          <div className="mx-auto w-24 h-24 bg-gradient-primary rounded-full flex items-center justify-center mb-6">
-            <Building2 className="w-12 h-12 text-white" />
+          <div className="mx-auto mb-6">
+            <img 
+              src={bankLogo} 
+              alt="Attijariwafa Bank Egypt" 
+              className="h-20 w-auto object-contain mx-auto"
+            />
           </div>
           <h1 className="text-3xl font-bold text-foreground mb-2">Welcome Back</h1>
           <p className="text-muted-foreground text-lg">
-            Sign in to access your onboarding dashboard
+            Attijariwafa Bank Egypt Onboarding
           </p>
         </div>
 
@@ -69,19 +91,20 @@ const Login = () => {
         <div className="flex-1 px-6">
           <form onSubmit={handleLogin} className="space-y-8">
             <div className="space-y-4">
-              <Label htmlFor="email" className="text-base font-medium text-foreground">
-                Email Address
+              <Label htmlFor="nationalId" className="text-base font-medium text-foreground">
+                National ID
               </Label>
               <div className="relative">
-                <Mail className="absolute left-4 top-4 h-5 w-5 text-muted-foreground" />
+                <CreditCard className="absolute left-4 top-4 h-5 w-5 text-muted-foreground" />
                 <Input
-                  id="email"
-                  type="email"
-                  placeholder="john.doe@bank.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  id="nationalId"
+                  type="text"
+                  placeholder="Enter 14-digit National ID"
+                  value={nationalId}
+                  onChange={(e) => setNationalId(e.target.value.replace(/\D/g, '').slice(0, 14))}
                   className="pl-12 h-14 text-base bg-background border-2 border-border focus:border-primary"
                   required
+                  maxLength={14}
                 />
               </div>
             </div>
@@ -118,7 +141,7 @@ const Login = () => {
           <div className="mt-8 p-6 bg-accent/50 rounded-2xl">
             <p className="text-sm text-muted-foreground text-center leading-relaxed">
               <strong className="text-foreground">Demo Credentials:</strong><br />
-              Email: john.doe@bank.com<br />
+              National ID: 12345678901234<br />
               Password: welcome123
             </p>
           </div>
@@ -145,13 +168,15 @@ const Login = () => {
 
         {/* Desktop Header */}
         <div className="text-center space-y-4 mb-8">
-          <div className="mx-auto w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center">
-            <Lock className="w-8 h-8 text-white" />
-          </div>
+          <img 
+            src={bankLogo} 
+            alt="Attijariwafa Bank Egypt" 
+            className="h-16 w-auto object-contain mx-auto"
+          />
           <div>
             <h1 className="text-2xl font-semibold text-foreground">Welcome Back</h1>
             <p className="text-muted-foreground">
-              Sign in to access your onboarding dashboard
+              Attijariwafa Bank Egypt Onboarding
             </p>
           </div>
         </div>
@@ -159,19 +184,20 @@ const Login = () => {
         {/* Desktop Form */}
         <form onSubmit={handleLogin} className="space-y-6">
           <div className="space-y-2">
-            <Label htmlFor="email" className="text-sm font-medium">
-              Email Address
+            <Label htmlFor="nationalId" className="text-sm font-medium">
+              National ID
             </Label>
             <div className="relative">
-              <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+              <CreditCard className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
               <Input
-                id="email"
-                type="email"
-                placeholder="john.doe@bank.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                id="nationalId"
+                type="text"
+                placeholder="Enter 14-digit National ID"
+                value={nationalId}
+                onChange={(e) => setNationalId(e.target.value.replace(/\D/g, '').slice(0, 14))}
                 className="pl-10"
                 required
+                maxLength={14}
               />
             </div>
           </div>
@@ -208,7 +234,7 @@ const Login = () => {
         <div className="mt-6 p-4 bg-accent rounded-lg">
           <p className="text-sm text-muted-foreground text-center">
             <strong>Demo Credentials:</strong><br />
-            Email: john.doe@bank.com<br />
+            National ID: 12345678901234<br />
             Password: welcome123
           </p>
         </div>
