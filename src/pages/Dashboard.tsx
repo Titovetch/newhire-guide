@@ -15,7 +15,10 @@ import {
   LogOut,
   User,
   Heart,
-  UserMinus
+  UserMinus,
+  Briefcase,
+  Settings,
+  GraduationCap
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import bankLogo from "@/assets/attijariwafa-bank-logo.png";
@@ -76,6 +79,20 @@ const Dashboard = () => {
       icon: UserMinus,
       path: "/leaver-process",
       color: "text-destructive"
+    },
+    {
+      title: "Welcome & Introduction",
+      description: "Learn about Attijariwafa Bank Egypt",
+      icon: Heart,
+      path: "/welcome-introduction",
+      color: "text-primary"
+    },
+    {
+      title: "Training & Orientation",
+      description: "Complete your training modules",
+      icon: GraduationCap,
+      path: "/training-orientation", 
+      color: "text-info"
     }
   ];
 
@@ -92,10 +109,24 @@ const Dashboard = () => {
             />
             <h1 className="text-xl font-semibold text-foreground">Welcome Aboard</h1>
           </div>
-          <Button variant="ghost" onClick={() => navigate("/")}>
-            <LogOut className="w-4 h-4 mr-2" />
-            Logout
-          </Button>
+          <div className="flex items-center gap-2">
+            <Button variant="ghost" onClick={() => navigate("/personal-info")}>
+              <User className="w-4 h-4 mr-2" />
+              Personal Info
+            </Button>
+            <Button variant="ghost" onClick={() => navigate("/job-details")}>
+              <Briefcase className="w-4 h-4 mr-2" />
+              Job Details
+            </Button>
+            <Button variant="ghost" onClick={() => navigate("/settings")}>
+              <Settings className="w-4 h-4 mr-2" />
+              Settings
+            </Button>
+            <Button variant="ghost" onClick={() => navigate("/")}>
+              <LogOut className="w-4 h-4 mr-2" />
+              Logout
+            </Button>
+          </div>
         </div>
       </div>
 
@@ -139,7 +170,7 @@ const Dashboard = () => {
             </Card>
 
             {/* Quick Actions */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-7 gap-4">
               {quickActions.map((action, index) => (
                 <Card 
                   key={index}

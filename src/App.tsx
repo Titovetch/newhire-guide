@@ -12,6 +12,11 @@ import Buddy from "./pages/Buddy";
 import HRDashboard from "./pages/HRDashboard";
 import MedicalGuide from "./pages/MedicalGuide";
 import LeaverProcess from "./pages/LeaverProcess";
+import WelcomeIntroduction from "./pages/WelcomeIntroduction";
+import PersonalInformation from "./components/PersonalInformation";
+import JobDetails from "./components/JobDetails";
+import TrainingOrientation from "./components/TrainingOrientation";
+import ProfileSettings from "./components/ProfileSettings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +37,11 @@ const App = () => (
           <Route path="/hr-dashboard" element={<HRDashboard />} />
           <Route path="/medical-guide" element={<MedicalGuide />} />
           <Route path="/leaver-process" element={<LeaverProcess />} />
+          <Route path="/welcome-introduction" element={<WelcomeIntroduction />} />
+          <Route path="/personal-info" element={<PersonalInformation />} />
+          <Route path="/job-details" element={<JobDetails />} />
+          <Route path="/training-orientation" element={<TrainingOrientation />} />
+          <Route path="/settings" element={<ProfileSettings />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

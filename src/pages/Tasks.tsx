@@ -14,7 +14,16 @@ import {
   Shield,
   Calendar,
   BookOpen,
-  Building
+  Building,
+  Camera,
+  FileCheck,
+  Heart,
+  Stethoscope,
+  Printer,
+  CreditCard,
+  Award,
+  GraduationCap,
+  Briefcase
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
@@ -38,91 +47,179 @@ const Tasks = () => {
   const [tasks, setTasks] = useState<Task[]>([
     {
       id: "1",
-      title: "Complete Employee Information Form",
-      description: "Fill out personal details, emergency contacts, and banking information",
-      category: "Documentation",
+      title: "Digital Photo 4x6",
+      description: "Upload high-quality digital photo for business use",
+      category: "Documents",
       priority: "high",
-      dueDate: "Dec 2, 2024",
-      estimatedTime: "15 min",
-      completed: true,
-      icon: FileText
+      dueDate: "Dec 5, 2024",
+      estimatedTime: "10 min",
+      completed: false,
+      icon: Camera
     },
     {
       id: "2",
-      title: "Watch Compliance Training Video",
-      description: "Complete mandatory compliance and ethics training module",
-      category: "Training",
+      title: "Computerized Birth Certificate",
+      description: "Submit computerized birth certificate",
+      category: "Documents",
       priority: "high",
-      dueDate: "Dec 3, 2024",
-      estimatedTime: "45 min",
-      completed: true,
-      icon: Video
+      dueDate: "Dec 5, 2024",
+      estimatedTime: "5 min",
+      completed: false,
+      icon: FileText
     },
     {
       id: "3",
-      title: "Attend IT Setup Meeting",
-      description: "Meet with IT team to configure your workstation and accounts",
-      category: "Setup",
+      title: "Labour Office Registration Certificate",
+      description: "Provide Labour Office Registration Certificate",
+      category: "Documents",
       priority: "high",
-      dueDate: "Dec 3, 2024",
-      estimatedTime: "30 min",
-      completed: true,
-      icon: Building
+      dueDate: "Dec 6, 2024",
+      estimatedTime: "5 min",
+      completed: false,
+      icon: FileCheck
     },
     {
       id: "4",
-      title: "Complete Security Training",
-      description: "Learn about bank security protocols and data protection",
-      category: "Training",
-      priority: "high",
-      dueDate: "Dec 4, 2024",
-      estimatedTime: "60 min",
-      completed: false,
-      icon: Shield
-    },
-    {
-      id: "5",
-      title: "Schedule Team Introduction Meeting",
-      description: "Meet your team members and understand your role",
-      category: "Social",
-      priority: "medium",
-      dueDate: "Dec 5, 2024",
-      estimatedTime: "30 min",
-      completed: false,
-      icon: Users
-    },
-    {
-      id: "6",
-      title: "Read Employee Handbook",
-      description: "Review company policies, benefits, and procedures",
-      category: "Documentation",
-      priority: "medium",
-      dueDate: "Dec 6, 2024",
-      estimatedTime: "90 min",
-      completed: false,
-      icon: BookOpen
-    },
-    {
-      id: "7",
-      title: "Set Up Direct Deposit",
-      description: "Configure your payroll and direct deposit information",
-      category: "Administrative",
+      title: "Eight Passport Sized Photographs",
+      description: "Submit 8 passport-sized photographs",
+      category: "Documents",
       priority: "medium",
       dueDate: "Dec 6, 2024",
       estimatedTime: "10 min",
       completed: false,
-      icon: FileText
+      icon: Camera
+    },
+    {
+      id: "5",
+      title: "Copy of National ID/Passport",
+      description: "National ID for Egyptians or Passport for Foreigners",
+      category: "Documents",
+      priority: "high",
+      dueDate: "Dec 5, 2024",
+      estimatedTime: "5 min",
+      completed: false,
+      icon: CreditCard
+    },
+    {
+      id: "6",
+      title: "Criminal Record Certificate",
+      description: "Clean criminal record certificate from authorities",
+      category: "Documents",
+      priority: "high",
+      dueDate: "Dec 7, 2024",
+      estimatedTime: "15 min",
+      completed: false,
+      icon: Shield
+    },
+    {
+      id: "7",
+      title: "Military Service Certificate",
+      description: "Military service certificate (Males only)",
+      category: "Documents",
+      priority: "medium",
+      dueDate: "Dec 8, 2024",
+      estimatedTime: "5 min",
+      completed: false,
+      icon: Award
     },
     {
       id: "8",
-      title: "Complete First Week Check-in",
-      description: "Meet with HR to discuss your first week experience",
-      category: "Administrative",
-      priority: "low",
-      dueDate: "Dec 9, 2024",
-      estimatedTime: "20 min",
+      title: "Academic Qualifications (Arabic)",
+      description: "Academic certificates in Arabic language",
+      category: "Documents",
+      priority: "high",
+      dueDate: "Dec 6, 2024",
+      estimatedTime: "10 min",
       completed: false,
-      icon: Calendar
+      icon: GraduationCap
+    },
+    {
+      id: "9",
+      title: "Experience Letter (3-5 years)",
+      description: "Experience letter covering previous 3 years (5 for high risk roles)",
+      category: "Documents",
+      priority: "high",
+      dueDate: "Dec 7, 2024",
+      estimatedTime: "10 min",
+      completed: false,
+      icon: Briefcase
+    },
+    {
+      id: "10",
+      title: "Clearance Letter from Previous Employer",
+      description: "Clearance letter from your previous employer",
+      category: "Documents",
+      priority: "high",
+      dueDate: "Dec 7, 2024",
+      estimatedTime: "10 min",
+      completed: false,
+      icon: FileCheck
+    },
+    {
+      id: "11",
+      title: "Social Insurance Form No. 6",
+      description: "Social Insurance form from previous work",
+      category: "Documents",
+      priority: "medium",
+      dueDate: "Dec 8, 2024",
+      estimatedTime: "5 min",
+      completed: false,
+      icon: FileText
+    },
+    {
+      id: "12",
+      title: "Social Insurance Office Print Out",
+      description: "Print out with period from Social Insurance Office",
+      category: "Documents",
+      priority: "medium",
+      dueDate: "Dec 8, 2024",
+      estimatedTime: "15 min",
+      completed: false,
+      icon: Printer
+    },
+    {
+      id: "13",
+      title: "Governmental Medical Certificate",
+      description: "Medical certificate from government medical insurance (Call 19806)",
+      category: "Medical",
+      priority: "high",
+      dueDate: "Dec 9, 2024",
+      estimatedTime: "30 min",
+      completed: false,
+      icon: Heart
+    },
+    {
+      id: "14",
+      title: "Bank Doctor Medical Certificate",
+      description: "Medical certificate from Bank Doctor (Level 4, Star Capital A1 Building)",
+      category: "Medical",
+      priority: "high",
+      dueDate: "Dec 10, 2024",
+      estimatedTime: "45 min",
+      completed: false,
+      icon: Stethoscope
+    },
+    {
+      id: "15",
+      title: "Marriage Certificate & Dependents",
+      description: "Marriage certificate, birth certificates of dependents, and photos",
+      category: "Family",
+      priority: "low",
+      dueDate: "Dec 12, 2024",
+      estimatedTime: "15 min",
+      completed: false,
+      icon: Heart
+    },
+    {
+      id: "16",
+      title: "Open Staff Bank Account",
+      description: "Open your staff account with Attijariwafa Bank Egypt",
+      category: "Banking",
+      priority: "medium",
+      dueDate: "Dec 11, 2024",
+      estimatedTime: "30 min",
+      completed: false,
+      icon: CreditCard
     }
   ]);
 
@@ -159,11 +256,10 @@ const Tasks = () => {
 
   const getCategoryColor = (category: string) => {
     switch (category) {
-      case "Training": return "text-info";
-      case "Documentation": return "text-primary";
-      case "Setup": return "text-success";
-      case "Social": return "text-purple-600";
-      case "Administrative": return "text-orange-600";
+      case "Documents": return "text-primary";
+      case "Medical": return "text-success";
+      case "Family": return "text-purple-600";
+      case "Banking": return "text-info";
       default: return "text-muted-foreground";
     }
   };
@@ -182,8 +278,8 @@ const Tasks = () => {
               <CheckCircle className="w-4 h-4 text-white" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-foreground">My Tasks</h1>
-              <p className="text-muted-foreground">Complete your onboarding checklist</p>
+              <h1 className="text-2xl font-bold text-foreground">Document Submission</h1>
+              <p className="text-muted-foreground">Submit required documents for your onboarding</p>
             </div>
           </div>
         </div>
