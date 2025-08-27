@@ -21,7 +21,6 @@ import {
   GraduationCap
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import bankLogo from "@/assets/attijariwafa-bank-logo.png";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -103,7 +102,7 @@ const Dashboard = () => {
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center gap-3">
             <img 
-              src={bankLogo} 
+              src="https://upload.wikimedia.org/wikipedia/ar/b/bb/Attijariwafa_bank_logo.png"
               alt="Attijariwafa Bank Egypt" 
               className="h-8 w-auto object-contain"
             />

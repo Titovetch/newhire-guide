@@ -16,7 +16,6 @@ import {
   Users
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import bankLogo from "@/assets/attijariwafa-bank-logo.png";
 
 const MedicalGuide = () => {
   const navigate = useNavigate();
@@ -88,8 +87,8 @@ const MedicalGuide = () => {
             Back to Dashboard
           </Button>
           <div className="flex items-center gap-3">
-            <img 
-              src={bankLogo} 
+          <img 
+            src="https://upload.wikimedia.org/wikipedia/ar/b/bb/Attijariwafa_bank_logo.png"
               alt="Attijariwafa Bank Egypt" 
               className="h-8 w-auto object-contain"
             />

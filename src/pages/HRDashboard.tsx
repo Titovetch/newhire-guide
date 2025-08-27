@@ -22,7 +22,6 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
-import bankLogo from "@/assets/attijariwafa-bank-logo.png";
 import CreateNewStaff from "@/components/CreateNewStaff";
 
 interface NewHire {
@@ -162,8 +161,8 @@ const HRDashboard = () => {
           </Button>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <img 
-                src={bankLogo} 
+            <img 
+              src="https://upload.wikimedia.org/wikipedia/ar/b/bb/Attijariwafa_bank_logo.png"
                 alt="Attijariwafa Bank Egypt" 
                 className="h-8 w-auto object-contain"
               />

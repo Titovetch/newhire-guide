@@ -2,7 +2,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, MapPin, Phone, Mail, Building, Users, Target, Heart, Shield } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import bankLogo from "@/assets/attijariwafa-bank-logo.png";
 
 const WelcomeIntroduction = () => {
   const navigate = useNavigate();
@@ -17,7 +16,7 @@ const WelcomeIntroduction = () => {
             Back to Dashboard
           </Button>
           <img 
-            src={bankLogo} 
+            src="https://upload.wikimedia.org/wikipedia/ar/b/bb/Attijariwafa_bank_logo.png"
             alt="Attijariwafa Bank Egypt" 
             className="h-8 w-auto object-contain"
           />

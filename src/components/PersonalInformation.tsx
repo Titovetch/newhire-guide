@@ -20,7 +20,6 @@ import {
   ArrowLeft
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import bankLogo from "@/assets/attijariwafa-bank-logo.png";
 
 const PersonalInformation = () => {
   const navigate = useNavigate();
@@ -57,7 +56,7 @@ const PersonalInformation = () => {
             Back to Dashboard
           </Button>
           <img 
-            src={bankLogo} 
+            src="https://upload.wikimedia.org/wikipedia/ar/b/bb/Attijariwafa_bank_logo.png"
             alt="Attijariwafa Bank Egypt" 
             className="h-8 w-auto object-contain"
           />

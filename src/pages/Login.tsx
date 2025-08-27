@@ -6,7 +6,6 @@ import { Label } from "@/components/ui/label";
 import { ArrowLeft, Lock, CreditCard, Building2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useIsMobile } from "@/hooks/use-mobile";
-import bankLogo from "@/assets/attijariwafa-bank-logo.png";
 
 const Login = () => {
   const [nationalId, setNationalId] = useState("");
@@ -75,8 +74,8 @@ const Login = () => {
         {/* Mobile Branding Section */}
         <div className="px-6 pt-8 pb-12 text-center">
           <div className="mx-auto mb-6">
-            <img 
-              src={bankLogo} 
+              <img 
+                src="https://upload.wikimedia.org/wikipedia/ar/b/bb/Attijariwafa_bank_logo.png"
               alt="Attijariwafa Bank Egypt" 
               className="h-20 w-auto object-contain mx-auto"
             />
@@ -168,8 +167,8 @@ const Login = () => {
 
         {/* Desktop Header */}
         <div className="text-center space-y-4 mb-8">
-          <img 
-            src={bankLogo} 
+              <img 
+                src="https://upload.wikimedia.org/wikipedia/ar/b/bb/Attijariwafa_bank_logo.png"
             alt="Attijariwafa Bank Egypt" 
             className="h-16 w-auto object-contain mx-auto"
           />
