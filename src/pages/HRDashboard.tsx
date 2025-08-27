@@ -15,9 +15,15 @@ import {
   Calendar,
   Filter,
   Download,
-  Search
+  Search,
+  Plus,
+  FileText,
+  BarChart3
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
+import bankLogo from "@/assets/attijariwafa-bank-logo.png";
+import CreateNewStaff from "@/components/CreateNewStaff";
 
 interface NewHire {
   id: string;
@@ -35,8 +41,10 @@ interface NewHire {
 
 const HRDashboard = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
+  const [showCreateStaff, setShowCreateStaff] = useState(false);
   
-  const [newHires] = useState<NewHire[]>([
+  const [newHires, setNewHires] = useState<NewHire[]>([
     {
       id: "1",
       name: "John Doe",
@@ -91,6 +99,25 @@ const HRDashboard = () => {
     }
   ]);
 
+  const handleCreateStaff = (newStaff: any) => {
+    setNewHires(prev => [...prev, newStaff]);
+  };
+
+  const generateReport = (type: string) => {
+    toast({
+      title: "Generating Report",
+      description: `${type} report is being generated and will be available for download shortly.`,
+    });
+    
+    // Mock report generation
+    setTimeout(() => {
+      toast({
+        title: "Report Ready",
+        description: `${type} report has been generated successfully.`,
+      });
+    }, 2000);
+  };
+
   const getStatusBadge = (status: string) => {
     switch (status) {
       case "on-track":
@@ -135,9 +162,11 @@ const HRDashboard = () => {
           </Button>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-gradient-primary rounded-full flex items-center justify-center">
-                <Users className="w-4 h-4 text-white" />
-              </div>
+              <img 
+                src={bankLogo} 
+                alt="Attijariwafa Bank Egypt" 
+                className="h-8 w-auto object-contain"
+              />
               <div>
                 <h1 className="text-2xl font-bold text-foreground">HR Dashboard</h1>
                 <p className="text-muted-foreground">Monitor new hire onboarding progress</p>
@@ -145,6 +174,10 @@ const HRDashboard = () => {
             </div>
             
             <div className="flex gap-2">
+              <Button onClick={() => setShowCreateStaff(true)} className="bg-primary hover:bg-primary/90">
+                <Plus className="w-4 h-4 mr-2" />
+                Create New Staff
+              </Button>
               <Button variant="outline" size="sm">
                 <Filter className="w-4 h-4 mr-2" />
                 Filter
@@ -309,8 +342,12 @@ const HRDashboard = () => {
               <CardTitle className="text-lg">Quick Actions</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              <Button variant="outline" className="w-full justify-start">
-                <Users className="w-4 h-4 mr-2" />
+              <Button 
+                variant="outline" 
+                className="w-full justify-start"
+                onClick={() => setShowCreateStaff(true)}
+              >
+                <Plus className="w-4 h-4 mr-2" />
                 Add New Hire
               </Button>
               <Button variant="outline" className="w-full justify-start">
@@ -346,25 +383,56 @@ const HRDashboard = () => {
 
           <Card className="bg-gradient-card shadow-card border-0">
             <CardHeader>
-              <CardTitle className="text-lg">Reports</CardTitle>
+              <CardTitle className="text-lg flex items-center gap-2">
+                <BarChart3 className="w-5 h-5" />
+                Reports & Analytics
+              </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              <Button variant="outline" className="w-full justify-start">
+              <Button 
+                variant="outline" 
+                className="w-full justify-start"
+                onClick={() => generateReport("Weekly Progress")}
+              >
                 <Download className="w-4 h-4 mr-2" />
                 Weekly Progress Report
               </Button>
-              <Button variant="outline" className="w-full justify-start">
+              <Button 
+                variant="outline" 
+                className="w-full justify-start"
+                onClick={() => generateReport("Onboarding Analytics")}
+              >
                 <TrendingUp className="w-4 h-4 mr-2" />
                 Onboarding Analytics
               </Button>
-              <Button variant="outline" className="w-full justify-start">
+              <Button 
+                variant="outline" 
+                className="w-full justify-start"
+                onClick={() => generateReport("Time to Productivity")}
+              >
                 <Clock className="w-4 h-4 mr-2" />
                 Time to Productivity
+              </Button>
+              <Button 
+                variant="outline" 
+                className="w-full justify-start"
+                onClick={() => generateReport("Equipment Distribution")}
+              >
+                <Package className="w-4 h-4 mr-2" />
+                Equipment Distribution
               </Button>
             </CardContent>
           </Card>
         </div>
       </div>
+
+      {/* Create New Staff Modal */}
+      {showCreateStaff && (
+        <CreateNewStaff 
+          onClose={() => setShowCreateStaff(false)}
+          onStaffCreated={handleCreateStaff}
+        />
+      )}
     </div>
   );
 };

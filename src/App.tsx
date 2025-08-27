@@ -10,6 +10,8 @@ import Tasks from "./pages/Tasks";
 import Equipment from "./pages/Equipment";
 import Buddy from "./pages/Buddy";
 import HRDashboard from "./pages/HRDashboard";
+import MedicalGuide from "./pages/MedicalGuide";
+import LeaverProcess from "./pages/LeaverProcess";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +30,8 @@ const App = () => (
           <Route path="/equipment" element={<Equipment />} />
           <Route path="/buddy" element={<Buddy />} />
           <Route path="/hr-dashboard" element={<HRDashboard />} />
+          <Route path="/medical-guide" element={<MedicalGuide />} />
+          <Route path="/leaver-process" element={<LeaverProcess />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

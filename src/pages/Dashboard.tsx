@@ -13,9 +13,12 @@ import {
   ClipboardList, 
   Package,
   LogOut,
-  User
+  User,
+  Heart,
+  UserMinus
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import bankLogo from "@/assets/attijariwafa-bank-logo.png";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -54,11 +57,25 @@ const Dashboard = () => {
       color: "text-info"
     },
     {
-      title: "Buddy Connect",
+      title: "Meet your colleagues",
       description: "Connect with your onboarding buddy",
       icon: Users,
       path: "/buddy",
       color: "text-success"
+    },
+    {
+      title: "Medical Network Guide",
+      description: "Healthcare policies and medical network",
+      icon: Heart,
+      path: "/medical-guide",
+      color: "text-warning"
+    },
+    {
+      title: "Leaver Process",
+      description: "Information about resignation procedures",
+      icon: UserMinus,
+      path: "/leaver-process",
+      color: "text-destructive"
     }
   ];
 
@@ -68,9 +85,11 @@ const Dashboard = () => {
       <div className="bg-white/50 backdrop-blur-sm border-b">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-gradient-primary rounded-full flex items-center justify-center">
-              <User className="w-4 h-4 text-white" />
-            </div>
+            <img 
+              src={bankLogo} 
+              alt="Attijariwafa Bank Egypt" 
+              className="h-8 w-auto object-contain"
+            />
             <h1 className="text-xl font-semibold text-foreground">Welcome Aboard</h1>
           </div>
           <Button variant="ghost" onClick={() => navigate("/")}>
@@ -120,7 +139,7 @@ const Dashboard = () => {
             </Card>
 
             {/* Quick Actions */}
-            <div className="grid md:grid-cols-3 gap-4">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
               {quickActions.map((action, index) => (
                 <Card 
                   key={index}

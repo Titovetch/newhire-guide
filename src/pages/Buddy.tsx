@@ -112,7 +112,7 @@ John Doe`;
               <Users className="w-4 h-4 text-white" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-foreground">Buddy Connect</h1>
+              <h1 className="text-2xl font-bold text-foreground">Meet your colleagues</h1>
               <p className="text-muted-foreground">Connect with your onboarding buddy</p>
             </div>
           </div>
