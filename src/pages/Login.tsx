@@ -40,7 +40,7 @@ const Login = () => {
     if (nationalId === "12345678901234" && password === "welcome123") {
       setTimeout(() => {
         toast({
-          title: "Welcome aboard!",
+          title: "Welcome to HR Platform!",
           description: "Successfully logged in to Attijariwafa Bank Egypt onboarding",
         });
         navigate("/dashboard");

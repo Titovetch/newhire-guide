@@ -106,7 +106,7 @@ const Dashboard = () => {
               alt="Attijariwafa Bank Egypt" 
               className="h-8 w-auto object-contain"
             />
-            <h1 className="text-xl font-semibold text-foreground">Welcome Aboard</h1>
+            <h1 className="text-xl font-semibold text-foreground">HR Onboarding Platform</h1>
           </div>
           <div className="flex items-center gap-2">
             <Button variant="ghost" onClick={() => navigate("/personal-info")}>

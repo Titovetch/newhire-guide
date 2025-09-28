@@ -1,16 +1,16 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { UserCheck, Users } from "lucide-react";
+import { UserCheck, Users, Briefcase } from "lucide-react";
 
 interface WelcomeCardProps {
   title: string;
   description: string;
-  icon: "user" | "hr";
+  icon: "user" | "hr" | "jobs";
   onClick: () => void;
 }
 
 export const WelcomeCard = ({ title, description, icon, onClick }: WelcomeCardProps) => {
-  const IconComponent = icon === "user" ? UserCheck : Users;
+  const IconComponent = icon === "user" ? UserCheck : icon === "hr" ? Users : Briefcase;
   
   return (
     <Card className="group cursor-pointer bg-gradient-card shadow-card hover:shadow-hover transition-all duration-300 border-0">

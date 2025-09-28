@@ -17,6 +17,9 @@ import PersonalInformation from "./components/PersonalInformation";
 import JobDetails from "./components/JobDetails";
 import TrainingOrientation from "./components/TrainingOrientation";
 import ProfileSettings from "./components/ProfileSettings";
+import Jobs from "./pages/Jobs";
+import JobApplication from "./pages/JobApplication";
+import ApplicationSuccess from "./pages/ApplicationSuccess";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -42,6 +45,9 @@ const App = () => (
           <Route path="/job-details" element={<JobDetails />} />
           <Route path="/training-orientation" element={<TrainingOrientation />} />
           <Route path="/settings" element={<ProfileSettings />} />
+          <Route path="/jobs" element={<Jobs />} />
+          <Route path="/jobs/:jobId/apply" element={<JobApplication />} />
+          <Route path="/application-success" element={<ApplicationSuccess />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -11,17 +11,17 @@ const FlowScreen = () => {
         <div className="text-center mb-12">
           <div className="mb-6">
             <div className="inline-flex items-center gap-2 bg-gradient-primary bg-clip-text text-transparent">
-              <h1 className="text-4xl md:text-5xl font-bold">Welcome Aboard</h1>
+              <h1 className="text-4xl md:text-5xl font-bold">HR Onboarding Platform</h1>
             </div>
           </div>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Your comprehensive onboarding platform for new bank employees. 
+            Comprehensive HR platform for employee onboarding and recruitment at Attijariwafa Bank Egypt.
             Choose your access level to begin your journey.
           </p>
         </div>
 
         {/* Welcome Cards */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           <WelcomeCard
             title="New Employee Login"
             description="Access your personalized onboarding dashboard, track your progress, and connect with your assigned buddy."
@@ -35,14 +35,21 @@ const FlowScreen = () => {
             icon="hr"
             onClick={() => navigate('/hr-dashboard')}
           />
+          
+          <WelcomeCard
+            title="Join Attijariwafa Bank"
+            description="Explore exciting career opportunities and apply for positions at Egypt's leading banking institution."
+            icon="jobs"
+            onClick={() => navigate('/jobs')}
+          />
         </div>
 
         {/* Footer */}
         <div className="text-center mt-16">
           <p className="text-muted-foreground text-sm">
             Need help? Contact HR at{" "}
-            <a href="mailto:hr@bank.com" className="text-primary hover:underline">
-              hr@bank.com
+            <a href="mailto:HR@attijariwafabank.com.eg" className="text-primary hover:underline">
+              HR@attijariwafabank.com.eg
             </a>
           </p>
         </div>
