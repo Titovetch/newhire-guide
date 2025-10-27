@@ -25,11 +25,11 @@ const PersonalInformation = () => {
   const navigate = useNavigate();
   const [isEditing, setIsEditing] = useState(false);
   const [personalInfo, setPersonalInfo] = useState({
-    fullName: "John Doe",
+    fullName: "Ahmed Tawfik",
     dateOfBirth: "1990-05-15",
     nationality: "Egyptian",
     phone: "+20 10 1234 5678",
-    email: "john.doe@attijariwafa.com.eg",
+    email: "ahmed.tawfik@attijariwafa.com.eg",
     address: "123 Cairo Street, Nasr City, Cairo",
     emergencyContactName: "Jane Doe",
     emergencyContactPhone: "+20 12 8765 4321",

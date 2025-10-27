@@ -70,14 +70,14 @@ const Buddy = () => {
     const subject = "Nice to meet you - New team member";
     const body = `Hi ${buddy.name},
 
-I'm John Doe, the new Junior Financial Analyst who just joined the Investment Banking team. I'm excited to work with you as my onboarding buddy!
+I'm Ahmed Tawfik, the new Head of Digital Products and Innovation who just joined the Digital Banking team. I'm excited to work with you as my onboarding buddy!
 
 I'd love to schedule a time to meet and learn more about the team and processes. Please let me know when would be a good time for you.
 
 Looking forward to hearing from you!
 
 Best regards,
-John Doe`;
+Ahmed Tawfik`;
 
     window.location.href = `mailto:${buddy.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     

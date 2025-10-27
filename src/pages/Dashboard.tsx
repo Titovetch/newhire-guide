@@ -25,10 +25,10 @@ import { useNavigate } from "react-router-dom";
 const Dashboard = () => {
   const navigate = useNavigate();
   const [user] = useState({
-    name: "John Doe",
-    position: "Junior Financial Analyst",
+    name: "Ahmed Tawfik",
+    position: "Head of Digital Products and Innovation",
     startDate: "December 2, 2024",
-    department: "Investment Banking"
+    department: "Digital Banking"
   });
 
   const [taskProgress] = useState({
