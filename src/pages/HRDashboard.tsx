@@ -46,9 +46,9 @@ const HRDashboard = () => {
   const [newHires, setNewHires] = useState<NewHire[]>([
     {
       id: "1",
-      name: "John Doe",
-      position: "Junior Financial Analyst",
-      department: "Investment Banking",
+      name: "Ahmed Tawfik",
+      position: "Head of Digital Products and Innovation",
+      department: "Digital Banking",
       startDate: "Dec 2, 2024",
       avatar: "/api/placeholder/40/40",
       tasksCompleted: 3,
@@ -371,7 +371,7 @@ const HRDashboard = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Package className="w-4 h-4 text-warning" />
-                <span>John Doe's laptop ready for pickup</span>
+                <span>Ahmed Tawfik's laptop ready for pickup</span>
               </div>
               <div className="flex items-center gap-2">
                 <AlertTriangle className="w-4 h-4 text-warning" />

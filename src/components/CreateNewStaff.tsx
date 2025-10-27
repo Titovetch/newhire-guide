@@ -82,11 +82,9 @@ const CreateNewStaff = ({ onClose, onStaffCreated }: CreateNewStaffProps) => {
   };
 
   const handleBusinessPartnerChange = (partnerId: string) => {
-    const partner = businessPartners.find(p => p.id === partnerId);
     setFormData({
       ...formData,
-      businessPartnerId: partnerId,
-      name: partner ? partner.name : ""
+      businessPartnerId: partnerId
     });
   };
 
@@ -203,18 +201,18 @@ const CreateNewStaff = ({ onClose, onStaffCreated }: CreateNewStaffProps) => {
               </Select>
             </div>
 
-            {/* Auto-filled Name */}
+            {/* Full Name */}
             <div className="space-y-2">
               <Label htmlFor="name" className="flex items-center gap-2">
                 <Users className="w-4 h-4" />
-                Full Name
+                Full Name *
               </Label>
               <Input
                 id="name"
                 value={formData.name}
-                readOnly
-                className="bg-muted"
-                placeholder="Will be auto-filled when business partner is selected"
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                placeholder="Enter full name"
+                required
               />
             </div>
 
