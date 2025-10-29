@@ -87,9 +87,9 @@ const Login = () => {
         </div>
 
         {/* Mobile Form */}
-        <div className="flex-1 px-6">
-          <form onSubmit={handleLogin} className="space-y-8">
-            <div className="space-y-4">
+        <div className="flex-1 px-6 pb-6 overflow-y-auto">
+          <form onSubmit={handleLogin} className="space-y-6">
+            <div className="space-y-3">
               <Label htmlFor="nationalId" className="text-base font-medium text-foreground">
                 National ID
               </Label>
@@ -108,7 +108,7 @@ const Login = () => {
               </div>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3">
               <Label htmlFor="password" className="text-base font-medium text-foreground">
                 Password
               </Label>
@@ -129,23 +129,39 @@ const Login = () => {
             <Button
               type="submit"
               variant="gradient"
-              className="w-full h-14 text-lg font-semibold mt-8"
+              className="w-full h-14 text-lg font-semibold mt-6"
               disabled={isLoading}
             >
               {isLoading ? "Signing in..." : "Sign In"}
             </Button>
           </form>
 
+          {/* Join Button */}
+          <div className="mt-4">
+            <div className="relative flex items-center justify-center my-4">
+              <div className="border-t border-border flex-1"></div>
+              <span className="px-4 text-sm text-muted-foreground">OR</span>
+              <div className="border-t border-border flex-1"></div>
+            </div>
+            
+            <Button
+              variant="outline"
+              onClick={() => navigate("/jobs")}
+              className="w-full h-14 text-lg font-semibold border-2"
+            >
+              <Building2 className="w-5 h-5 mr-2" />
+              Join Attijariwafa Bank
+            </Button>
+          </div>
+
           {/* Demo Credentials for Mobile */}
-          <div className="mt-8 p-6 bg-accent/50 rounded-2xl">
+          <div className="mt-6 p-5 bg-accent/50 rounded-2xl">
             <p className="text-sm text-muted-foreground text-center leading-relaxed">
               <strong className="text-foreground">Demo Credentials:</strong><br />
               National ID: 12345678901234<br />
               Password: welcome123
             </p>
           </div>
-
-          <div className="h-8" />
         </div>
       </div>
     );
@@ -229,6 +245,25 @@ const Login = () => {
             {isLoading ? "Signing in..." : "Sign In"}
           </Button>
         </form>
+
+        {/* Join Button */}
+        <div className="mt-4">
+          <div className="relative flex items-center justify-center my-4">
+            <div className="border-t border-border flex-1"></div>
+            <span className="px-3 text-sm text-muted-foreground">OR</span>
+            <div className="border-t border-border flex-1"></div>
+          </div>
+          
+          <Button
+            variant="outline"
+            size="lg"
+            onClick={() => navigate("/jobs")}
+            className="w-full"
+          >
+            <Building2 className="w-4 h-4 mr-2" />
+            Join Attijariwafa Bank
+          </Button>
+        </div>
 
         <div className="mt-6 p-4 bg-accent rounded-lg">
           <p className="text-sm text-muted-foreground text-center">
